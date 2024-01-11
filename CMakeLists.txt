@@ -10,6 +10,15 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(lely_core_libraries REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(urdf REQUIRED)
+find_package(kdl_parser REQUIRED)
+
+generate_dcf(Turtlebot_PoistionControl)
+
 install(DIRECTORY
   launch
   DESTINATION share/${PROJECT_NAME}
@@ -21,7 +30,19 @@ install(DIRECTORY
 install(DIRECTORY
   meshes
   DESTINATION share/${PROJECT_NAME}
-) 
+)
+install(DIRECTORY
+  config
+  DESTINATION share/${PROJECT_NAME}
+)
+install(DIRECTORY
+  ros2_canopen
+  DESTINATION share/${PROJECT_NAME}
+)
+install(DIRECTORY
+  source
+  DESTINATION share/${PROJECT_NAME}
+)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -36,3 +57,4 @@ if(BUILD_TESTING)
 endif()
 
 ament_package()
+

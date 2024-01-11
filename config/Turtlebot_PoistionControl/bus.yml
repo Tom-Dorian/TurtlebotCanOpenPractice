@@ -1,15 +1,16 @@
 options:
-  dcf_path: "@BUS_CONFIG_PATH@"
+  dcf_path: "/home/brianwaters/workspaces/tom_training_ws/install/ros2_turtlebot_can_open/share/ros2_turtlebot_can_open/config/Turtlebot_PoistionControl"
 
 master:
-  node_id: 1
+  node_id: 7
+  baudrate: 800
   driver: "ros2_canopen::MasterDriver"
   package: "canopen_master_driver"
   sync_period: 10000
 
-wheel_left_joint:
+left_wheel_joint:
   node_id: 5
-  dcf: "cia402_slave.eds"
+  dcf: "cia402_slave_n5.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
   period: 10
@@ -78,9 +79,9 @@ wheel_left_joint:
       - {index: 0x607A, sub_index: 0} # target position
       - {index: 0x60FF, sub_index: 0} # target velocity
 
-wheel_right_joint:
+right_wheel_joint:
   node_id: 6
-  dcf: "cia402_slave.eds"
+  dcf: "cia402_slave_n6.eds"
   driver: "ros2_canopen::Cia402Driver"
   package: "canopen_402_driver"
   period: 10
@@ -145,6 +146,3 @@ wheel_right_joint:
     2:
       enabled: true
       cob_id: "auto"
-      mapping:
-      - {index: 0x607A, sub_index: 0} # target position
-      - {index: 0x60FF, sub_index: 0} # target velocity
